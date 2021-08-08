@@ -1,0 +1,29 @@
+{% extends "learning_users/base.html" %}
+{% load static %}
+
+{% block title_block %}
+REGISTRATION
+{% endblock %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    {% if registered %}
+        <h1>Thank you for registering</h1>
+
+    {% else %}
+        <h1>Register here!</h1>
+        <p>Fill out the form:</p>
+
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <input type="submit" value="Register">
+        </form>
+
+    {% endif %}
+</div>
+
+{% endblock %}
